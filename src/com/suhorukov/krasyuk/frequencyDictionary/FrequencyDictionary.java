@@ -3,10 +3,7 @@ package com.suhorukov.krasyuk.frequencyDictionary;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -65,6 +62,7 @@ public class FrequencyDictionary {
 
     public void sortAndWriteFrequencyDictionary(FileWriter fwt, HashMap<String, WordCounter> frequencyDictionary) {
         TreeSet<WordCounter> sortedWordCounter= new TreeSet<WordCounter>();
+
         if ((fwt != null) && (frequencyDictionary != null))
         {
             for (Map.Entry<String, WordCounter> entry: frequencyDictionary.entrySet()) {
