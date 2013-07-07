@@ -61,13 +61,19 @@ public class FrequencyDictionary {
     }
 
     public void sortAndWriteFrequencyDictionary(FileWriter fwt, HashMap<String, WordCounter> frequencyDictionary) {
-        TreeSet<WordCounter> sortedWordCounter= new TreeSet<WordCounter>();
+//        TreeSet<WordCounter> sortedWordCounter= new TreeSet<WordCounter>();
+        ArrayList<WordCounter> sortedWordCounter= new ArrayList<WordCounter>();
 
         if ((fwt != null) && (frequencyDictionary != null))
         {
+/*            for (Map.Entry<String, WordCounter> entry: frequencyDictionary.entrySet()) {
+                sortedWordCounter.add(entry.getValue());
+            }
+*/
             for (Map.Entry<String, WordCounter> entry: frequencyDictionary.entrySet()) {
                 sortedWordCounter.add(entry.getValue());
             }
+            Collections.sort(sortedWordCounter);
 
             for (WordCounter wc: sortedWordCounter) {
                 try {
