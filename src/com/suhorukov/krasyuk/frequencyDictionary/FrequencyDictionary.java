@@ -1,9 +1,12 @@
 package com.suhorukov.krasyuk.frequencyDictionary;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.*;
+import java.io.Writer;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,6 +22,7 @@ public class FrequencyDictionary {
 
         if (addWord.length() > 0) {
             wordCounter= frequencyDictionary.get(addWord.toString());
+
             if (wordCounter == null) {
                 frequencyDictionary.put(addWord.toString(), new WordCounter(addWord.toString(), 1));
             }
@@ -27,6 +31,7 @@ public class FrequencyDictionary {
 
             return 1;
         }
+
         return 0;
     }
 
@@ -60,7 +65,7 @@ public class FrequencyDictionary {
         }
     }
 
-    public void sortAndWriteFrequencyDictionary(FileWriter fwt, HashMap<String, WordCounter> frequencyDictionary) {
+    public void sortAndWriteFrequencyDictionary(Writer fwt, HashMap<String, WordCounter> frequencyDictionary) {
 //        TreeSet<WordCounter> sortedWordCounter= new TreeSet<WordCounter>();
         ArrayList<WordCounter> sortedWordCounter= new ArrayList<WordCounter>();
 
@@ -81,7 +86,7 @@ public class FrequencyDictionary {
                     //fwt.write(wc.getWordCounterData());
                     fwt.flush();
                 } catch (IOException e) {
-                    System.err.println("Ошибка записи в файл!!!");
+                    System.err.println("Ошибка записи!!!");
                     break;
                 }
             }

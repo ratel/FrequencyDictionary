@@ -22,7 +22,7 @@ public class WordCounter implements Comparable{
     }
 
     public void calcFrequency(int countWords) {
-        frequency= ((double)count)/((double)countWords);
+        frequency= ((double)count) / ((double)countWords);
     }
 
     public int getCount() {
@@ -40,12 +40,14 @@ public class WordCounter implements Comparable{
     @Override
     public int compareTo(Object o) {
         WordCounter compareObj;
+
         if (o instanceof WordCounter)
             compareObj= (WordCounter) o;
         else
             return 1;
 
         int result= Integer.compare(compareObj.getCount(), count);
+
         if (result == 0) {
             result= sWord.compareTo(compareObj.getSWord());
         }

@@ -2,7 +2,6 @@ package com.suhorukov.krasyuk.frequencyDictionary;
 
 import java.io.*;
 import java.util.HashMap;
-import java.util.Scanner;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,9 +17,11 @@ public class Main {
 
         try {
             readerData= new InputStreamReader(new BufferedInputStream(new FileInputStream(args[0])));
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             System.err.println("Не удалось открыть файл \"" + args[0] + "\"");
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             System.out.println("Для работы программы нужно указать имя файла по которому будет формироваться частотный словарь.");
         }
 
@@ -28,11 +29,21 @@ public class Main {
             FrequencyDictionary fDictionary= new FrequencyDictionary();
             fDictionary.formFrequencyDictionary(readerData, frequencyDictionary);
 
-            File fOut= new File("res\\Out.txt");
             try {
-                FileWriter fwt= new FileWriter(fOut);
+                readerData.close();
+            }
+            catch (IOException e) {
+                System.err.println("Ошибка при закрывании файла по которому формировался частотный словарь!");
+            }
+
+            File fOut= new File("res\\Out.txt");
+
+            try {
+                Writer fwt= new FileWriter(fOut);
                 fDictionary.sortAndWriteFrequencyDictionary(fwt, frequencyDictionary);
-            } catch (IOException e) {
+                fwt.close();
+            }
+            catch (IOException e) {
                 System.err.println("Не удалось открыть файл для записи результатов подсчета частотного словаря!!!");
             }
         }
